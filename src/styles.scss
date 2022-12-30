@@ -1,3 +1,39 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "tema-principal.scss";
+
+
 body{
     background-color: #0D0D0D;
 }
+
+.card-body{
+    background-color: $primary;
+}
+// @font-face {
+//     font-family: 'Graphik-Light';
+//     src: url(assets/fonts/Graphik-Font-Family/GraphikLight.otf) format('opentype');
+//   }
+
+//   @font-face {
+//     font-family: 'Graphik';
+//     src: url(assets/fonts/Graphik-Font-Family/GraphikLight.otf) format('opentype');
+//     font-weight: normal;
+//     font-style: normal;
+//   }
+
+//   @font-face {
+//     font-family: 'Graphik-Regular';
+//     src: url(assets/fonts/Graphik-Font-Family/GraphikRegular.otf) format('opentype');
+//     font-weight: normal;
+//     font-style: normal;
+//   }
+
+//   @font-face {
+//     font-family: 'Graphik-Medium';
+//     src: url(assets/fonts/Graphik-Font-Family/GraphikMedium.otf) format('opentype');
+//   }
+
+//   $font-family-sans-serif: 'Graphik-Medium';
+//   $font-family-monospace: 'Graphik';

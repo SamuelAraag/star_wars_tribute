@@ -10,10 +10,10 @@ const url = "https://swapi.py4e.com/api/films";
 export class ListaFilmesComponent implements OnInit {
   listaDosFilmes: any;
 
-  // episode_id
+
+
   async ngOnInit() {
     await this._buscarTodosOsFilmes();
-    debugger;
   }
 
   async _buscarTodosOsFilmes() {
