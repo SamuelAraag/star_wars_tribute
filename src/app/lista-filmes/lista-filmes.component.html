@@ -1,34 +1,13 @@
-<div class="pagina-lista-filmes container">
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+<div class="pagina-lista-filmes">
+    <div class="container w-25 mt-5">
+        <div class="logo-star-wars">
+            <img class="img-fluid" src="../../assets/imagens/logo/pngwing.com.png" alt="">
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../assets/imagens/01-intro-631.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../assets/imagens/scale.jpeg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="../../assets/imagens/Star-wars-logo-new-tall.jpg" class="d-block w-100" alt="...">
-            </div>
+    </div>
+    <div class="cards-categorias container">
+        <div class="row">
+            <app-card-categorias [categorias]="categorias"></app-card-categorias>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 
     <!-- <h3 class="text-white text-center py-5">Filmes Star Wars</h3>
@@ -53,8 +32,8 @@
 
     </div>
 
-    <!--
-    <p slot="texto" class="fs-3">Mais assistidos</p>
+
+    <!-- <p slot="texto" class="fs-3">Mais assistidos</p>
     <p slot="texto" class="text-danger col-sm-2">Ver todos</p>
     <div conteudo class="slider categorias">
       <ul id="carousel-mais-assistidos" class="lista-cards-scroll-horizontal owl-carousel">

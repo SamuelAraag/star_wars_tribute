@@ -12,6 +12,9 @@ export class ListaFilmesComponent implements OnInit {
   listaDosFilmes: any;
   categorias: any;
 
+  ngOnInit() {
+    this._pegarTodasAsCategorias();
+  }
 
   async _buscarTodosOsFilmes() {
     const response = await fetch(urlFilmes);
@@ -26,6 +29,11 @@ export class ListaFilmesComponent implements OnInit {
     const data = await response.json();
     const results = data;
     console.log(results);
-    this.categorias = results;
+    debugger;
+    this.categorias = this.pegarNomesDasCategorias(results);
+  }
+
+  pegarNomesDasCategorias(objeto: any) {
+    return Object.getOwnPropertyNames(objeto);
   }
 }

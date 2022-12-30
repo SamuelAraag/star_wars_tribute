@@ -4,13 +4,19 @@
 @import "tema-principal.scss";
 
 
-body{
+body {
     background-color: #0D0D0D;
 }
 
-.card-body{
+.card-body {
     background-color: $primary;
 }
+
+body {
+    min-height: 1700px;
+    background-image: url('/assets/imagens/tela-inicial/background_star_wars.png');
+}
+
 // @font-face {
 //     font-family: 'Graphik-Light';
 //     src: url(assets/fonts/Graphik-Font-Family/GraphikLight.otf) format('opentype');
