@@ -1,0 +1,14 @@
+.card-categorias .card {
+    transition: 0.3s all;
+    transform: scale(0.8);
+}
+
+.card-categorias .card:hover {
+    transition: 0.3s all;
+    transform: scale(1)
+}
+
+.card-body {
+    background-color: black;
+    color: yellow;
+}
