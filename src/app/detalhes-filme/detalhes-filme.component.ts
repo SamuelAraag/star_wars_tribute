@@ -10,8 +10,20 @@ const url = "https://swapi.py4e.com/api/films/";
   styleUrls: ["./detalhes-filme.component.scss"],
 })
 export class DetalhesFilmeComponent implements OnInit {
-  urlAtual?: String;
+  urlAtual?: string;
+
+  urlImagemFilme = {
+    1: "../assets/imagens/a_new_hope/frame_a_new_hope.jpeg",
+    2: "../assets/imagens/the_empire_strike_back/frame_the_empire_strike_back.jpeg",
+    3: "Detalhes Artigo",
+    4: "Categorias",
+    5: "Dicas Rápidas",
+    6: "Vídeos",
+    7: "Webinar",
+  };
+
   filme: any;
+  imagemFilme?: String;
 
   constructor(private router: Router) {
     router.events
@@ -27,6 +39,12 @@ export class DetalhesFilmeComponent implements OnInit {
       .then((data) => data);
     this.filme = response;
     console.log(this.filme);
+    let idDoFilme = this.urlAtual?.split("/")[1];
+    this._atribuirImagemParaFilmeSelecionado(idDoFilme);
+  }
+
+  _atribuirImagemParaFilmeSelecionado(id: any) {
+    this.imagemFilme = this.urlImagemFilme[id as keyof object];
     debugger;
   }
 }

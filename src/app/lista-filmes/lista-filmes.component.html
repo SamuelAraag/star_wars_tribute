@@ -31,10 +31,37 @@
         </button>
     </div>
 
-    <h3 class="text-white text-center py-5">Filmes Star Wars</h3>
+    <!-- <h3 class="text-white text-center py-5">Filmes Star Wars</h3>
     <div class="list-group" *ngFor="let filmes of this.listaDosFilmes; index as i">
         <a href="{{i + 1}}" class="list-group-item list-group-item-action list-group-item-dark">{{filmes.title}}</a>
+    </div> -->
+
+    <div class="py-4">
+        <div class="row g-5">
+            <div class="card-hover col-md-12 col-lg-4 mb-lg-0" *ngFor="let filme of this.listaDosFilmes; index as i">
+                <div class="conteudo-card w-100">
+                    <div class="card">
+                        <img src="../assets/imagens/a_new_hope/frame_a_new_hope.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title text-white">{{filme.title}}</h5>
+                            <a href="1" class="btn btn-dark">Abrir detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <!--
+    <p slot="texto" class="fs-3">Mais assistidos</p>
+    <p slot="texto" class="text-danger col-sm-2">Ver todos</p>
+    <div conteudo class="slider categorias">
+      <ul id="carousel-mais-assistidos" class="lista-cards-scroll-horizontal owl-carousel">
+        <li class="card-video d-inline-block" *ngFor="let filme of listaDosFilmes; index as i">
+          <app-card-filme [filme]="filme"></app-card-filme>
+        </li>
+      </ul>
+    </div> -->
 
 </div>

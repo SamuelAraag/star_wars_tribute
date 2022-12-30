@@ -1,0 +1,42 @@
+$primary: #1B1B1B;
+$secondary: #FFD233;
+$success: #4ECB71;
+$info: #511E9E;
+$warning: #FFD233;
+$danger: #ED1A20;
+
+$favorite: #578BF2;
+
+$dark: #292A2C;
+
+$body-bg: #1B1B1B;
+$body-color: #FDFEFF;
+
+$input-btn-padding-y: .300rem !default;
+$input-btn-padding-x: 1.3rem;
+
+$link-color: white;
+$emphasized-link-hover-darken-percentage: 100%;
+// $link-hover-color: $secondary;
+$nav-link-focus: white;
+
+$link-hover-decoration: none;
+$yiq-text-dark: #ffffff;
+$headings-color: $secondary;
+
+
+$navbar-dark-color: rgba($link-color, 1) !default;
+$bs-navbar-hover-color: $link-color;
+
+// .nav-link:focus {
+//   color: $link-color;
+// }
+
+$navbar-hover-color: $secondary;
+$navbar-dark-hover-color: $secondary;
+$navbar-dark-active-color: $link-color !default;
+$navbar-dark-disabled-color: rgba($link-color, .25) !default;
+$navbar-dark-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+$navbar-dark-toggler-border-color: rgba($link-color, .1) !default;
+$navbar-dark-brand-color: $navbar-dark-active-color !default;
+$navbar-dark-brand-hover-color: $navbar-dark-active-color !default;

@@ -12,12 +12,6 @@ export class ListaFilmesComponent implements OnInit {
   listaDosFilmes: any;
   categorias: any;
 
-  // episode_id
-  async ngOnInit() {
-    await this._buscarTodosOsFilmes();
-    await this._pegarTodasAsCategorias();
-    debugger;
-  }
 
   async _buscarTodosOsFilmes() {
     const response = await fetch(urlFilmes);
