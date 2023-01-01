@@ -7,9 +7,11 @@ import { ListaFilmesComponent } from "./lista-filmes/lista-filmes.component";
 import { DetalhesFilmeComponent } from "./detalhes-filme/detalhes-filme.component";
 import { CategoriasComponent } from './categorias/categorias.component';
 import { CardCategoriasComponent } from './categorias/card-categorias/card-categorias.component';
+import { ListaCategoriasComponent } from './lista-categorias/lista-categorias.component';
 
 @NgModule({
-  declarations: [AppComponent, ListaFilmesComponent, DetalhesFilmeComponent, CategoriasComponent, CardCategoriasComponent],
+  declarations: [AppComponent, ListaFilmesComponent, DetalhesFilmeComponent, CategoriasComponent, CardCategoriasComponent, ListaCategoriasComponent, 
+],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

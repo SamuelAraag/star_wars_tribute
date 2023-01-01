@@ -12,11 +12,32 @@ body {
     background-color: $primary;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     min-height: 1700px;
     background-image: url('/assets/imagens/tela-inicial/background_star_wars.png');
 }
 
+.gradiente-amarelo{
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 5px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to bottom,
+          rgba(254, 212, 24, 0.457),
+          rgba(10, 3, 19, 0.65));
+      opacity: 0.50;
+    }
+}
 // @font-face {
 //     font-family: 'Graphik-Light';
 //     src: url(assets/fonts/Graphik-Font-Family/GraphikLight.otf) format('opentype');
