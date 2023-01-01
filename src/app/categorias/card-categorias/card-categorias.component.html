@@ -1,8 +1,10 @@
-<div class="card-categorias col-sm" *ngFor="let categoria of categorias">
+<div class="card-categorias col-sm">
     <div class="card">
-        <img src="../../assets/imagens/carousel/01-intro-631.jpg" class="card-img-top rounded img-fluid" alt="...">
+        <div class="gradiente-amarelo">
+            <img src="{{imagensCategorias}}" class="rounded imagem-card-categorias" alt="...">
+        </div>
         <div class="card-body">
-            <h5 class="card-title">{{categoria}}</h5>
+            <h5 class="card-title">{{categorias}}</h5>
         </div>
     </div>
 </div>

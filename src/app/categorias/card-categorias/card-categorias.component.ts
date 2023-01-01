@@ -9,4 +9,7 @@ export class CardCategoriasComponent {
 
   @Input()
   categorias: String[] = []
+
+  @Input()
+  imagensCategorias: {} = {}
 }

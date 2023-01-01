@@ -12,6 +12,15 @@ export class ListaFilmesComponent implements OnInit {
   listaDosFilmes: any;
   categorias: any;
 
+  imagensCategorias: any[] = [
+    '../../assets/imagens/categorias/people.jpg',
+    '../../assets/imagens/categorias/planets.jpeg',
+    '../../assets/imagens/categorias/films.jpeg',
+    '../../assets/imagens/categorias/species.png',
+    '../../assets/imagens/categorias/starships.jpg',
+    '../../assets/imagens/categorias/vehicles.jpg',
+  ];
+
   ngOnInit() {
     this._pegarTodasAsCategorias();
   }
@@ -29,8 +38,9 @@ export class ListaFilmesComponent implements OnInit {
     const data = await response.json();
     const results = data;
     console.log(results);
-    debugger;
     this.categorias = this.pegarNomesDasCategorias(results);
+    this.imagensCategorias;
+    debugger;
   }
 
   pegarNomesDasCategorias(objeto: any) {
