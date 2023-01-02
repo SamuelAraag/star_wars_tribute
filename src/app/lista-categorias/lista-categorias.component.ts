@@ -17,8 +17,8 @@ export class ListaCategoriasComponent {
     '../../assets/imagens/categorias/planets.jpeg',
     '../../assets/imagens/categorias/films.jpeg',
     '../../assets/imagens/categorias/species.png',
-    '../../assets/imagens/categorias/starships.jpg',
     '../../assets/imagens/categorias/vehicles.jpg',
+    '../../assets/imagens/categorias/starships.jpg',
   ];
 
   ngOnInit() {
@@ -40,7 +40,6 @@ export class ListaCategoriasComponent {
     console.log(results);
     this.categorias = this.pegarNomesDasCategorias(results);
     this.imagensCategorias;
-    debugger;
   }
 
   pegarNomesDasCategorias(objeto: any) {
@@ -48,7 +47,7 @@ export class ListaCategoriasComponent {
   }
 
   abrirCategoria(categoria: any){
-    
+
     this._buscarCategoriaSelecionada(categoria);
 
     alert('Não implementado')
@@ -56,7 +55,6 @@ export class ListaCategoriasComponent {
 
   async _buscarCategoriaSelecionada(categoria: any) {
     const response = await fetch(urlGeral + '/' + categoria);
-    debugger
     const data = await response.json();
     const results = data.results;
     console.log(results);

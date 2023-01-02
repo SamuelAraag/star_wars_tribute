@@ -19,7 +19,6 @@ export class ListaFilmesComponent implements OnInit {
     const data = await response.json();
     const results = data.results;
     console.log(results);
-    debugger
     this.todosOsFilmes = results;
   }
 }

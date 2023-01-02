@@ -45,6 +45,5 @@ export class DetalhesFilmeComponent implements OnInit {
 
   _atribuirImagemParaFilmeSelecionado(id: any) {
     this.imagemFilme = this.urlImagemFilme[id as keyof object];
-    debugger;
   }
 }
