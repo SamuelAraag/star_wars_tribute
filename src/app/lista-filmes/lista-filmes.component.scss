@@ -1,24 +1,28 @@
-.card-categorias .card {
+.lista-dos-filmes{
+    min-height: 1500px;
+}
+.card {
     transition: 0.2s all;
-    transform: scale(0.8);
+    transform: scale(1);
 }
 
-.card-categorias .card:hover {
+.card:hover {
     transition: 0.2s all;
-    transform: scale(1)
+    transform: scale(1.1)
 }
 
 .card-body {
     background-color: black;
     color: yellow;
     border-radius: 10px;
+    height: 85px;
 }
 
 .card {
     border: solid 4px yellow;
     background-color: black;
-    width: 218px;
-    height: 394px;
+    // width: 218px;
+    // height: 394px;
 }
 
 .lista-dos-filmes {
@@ -26,7 +30,7 @@
 }
 
 .imagem-card-filmes {
-    height: 295px;
+    height: 443px;
     object-fit: cover;
 }
 
