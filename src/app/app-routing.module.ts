@@ -7,6 +7,7 @@ import { ListaFilmesComponent } from "./lista-filmes/lista-filmes.component";
 const routes: Routes = [
   { path: "", component: ListaCategoriasComponent },
   { path: "films", component: ListaFilmesComponent },
+  { path: "films/:id", component: DetalhesFilmeComponent },
 ];
 
 @NgModule({

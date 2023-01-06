@@ -13,7 +13,7 @@ export class DetalhesFilmeComponent implements OnInit {
   urlAtual?: string;
 
   urlImagemFilme = {
-    1: "../assets/imagens/a_new_hope/frame_a_new_hope.jpeg",
+    1: "../assets/imagens/films/wallpaper/0.jpeg",
     2: "../assets/imagens/the_empire_strike_back/frame_the_empire_strike_back.jpeg",
     3: "Detalhes Artigo",
     4: "Categorias",
@@ -34,12 +34,13 @@ export class DetalhesFilmeComponent implements OnInit {
     this._obterFilme();
   }
   async _obterFilme() {
-    const response = await fetch(url + this.urlAtual)
+    let idDoFilme = this.urlAtual?.split("/")[2];
+    const response = await fetch(url + idDoFilme)
       .then((res) => res.json())
       .then((data) => data);
     this.filme = response;
     console.log(this.filme);
-    let idDoFilme = this.urlAtual?.split("/")[1];
+    debugger;
     this._atribuirImagemParaFilmeSelecionado(idDoFilme);
   }
 
