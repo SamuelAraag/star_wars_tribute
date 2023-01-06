@@ -13,13 +13,13 @@ export class DetalhesFilmeComponent implements OnInit {
   urlAtual?: string;
 
   urlImagemFilme = {
-    1: "../assets/imagens/films/wallpaper/0.jpeg",
-    2: "../assets/imagens/the_empire_strike_back/frame_the_empire_strike_back.jpeg",
-    3: "Detalhes Artigo",
-    4: "Categorias",
-    5: "Dicas Rápidas",
-    6: "Vídeos",
-    7: "Webinar",
+    1: "../assets/imagens/films/wallpaper/0.jpg",
+    2: "../assets/imagens/films/wallpaper/1.jpg",
+    3: "../assets/imagens/films/wallpaper/2.jpg",
+    4: "../assets/imagens/films/wallpaper/3.jpg",
+    5: "../assets/imagens/films/wallpaper/4.jpg",
+    6: "../assets/imagens/films/wallpaper/5.jpg",
+    7: "../assets/imagens/films/wallpaper/6.jpg",
   };
 
   filme: any;
