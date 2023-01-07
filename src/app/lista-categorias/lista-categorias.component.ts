@@ -1,8 +1,7 @@
 import { Component } from "@angular/core";
 
-const urlGeral = "https://swapi.py4e.com/api/vehicles";
-// const urlFilmes = "https://swapi.py4e.com/api/films";
-// const urlGeral = "https://swapi.py4e.com/api/";
+const urlFilmes = "https://swapi.py4e.com/api/films";
+const urlGeral = "https://swapi.py4e.com/api/";
 
 @Component({
   selector: "app-lista-categorias",
@@ -12,25 +11,6 @@ const urlGeral = "https://swapi.py4e.com/api/vehicles";
 export class ListaCategoriasComponent {
   listaDosFilmes: any;
   categorias: any;
-
-  //   nomesDasCategoriasTraduzido: string[] = []
-  // :
-  // "people"
-  // 1
-  // :
-  // "planets"
-  // 2
-  // :
-  // "films"
-  // 3
-  // :
-  // "species"
-  // 4
-  // :
-  // "vehicles"
-  // 5
-  // :
-  // "starships"
 
   imagensCategorias: any[] = [
     "../../assets/imagens/categorias/people.jpg",
@@ -46,21 +26,14 @@ export class ListaCategoriasComponent {
     this.pegarNomesDasCategorias(this.listaDosFilmes);
   }
 
-  // async _buscarTodosOsFilmes() {
-  //   const response = await fetch(urlFilmes);
-  //   const data = await response.json();
-  //   const results = data.results;
-  //   console.log(results);
-  //   this.listaDosFilmes = results;
-  // }
-
   async _pegarTodasAsCategorias() {
     const response = await fetch(urlGeral);
     const data = await response.json();
     const results = data;
-    console.log(results);
     this.categorias = this.pegarNomesDasCategorias(results);
-    debugger;
+    this.categorias = this._formatarTextoComPrimeiraLetraMaiuscula(
+      this.categorias
+    );
     this.imagensCategorias;
   }
 
@@ -80,5 +53,9 @@ export class ListaCategoriasComponent {
     const results = data.results;
     console.log(results);
     this.listaDosFilmes = results;
+  }
+
+  _formatarTextoComPrimeiraLetraMaiuscula(palavras: string[]): string[] {
+    return palavras.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
   }
 }
