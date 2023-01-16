@@ -8,7 +8,7 @@ const urlFilmes = "https://swapi.py4e.com/api/films";
   styleUrls: ["./lista-filmes.component.scss"],
 })
 export class ListaFilmesComponent implements OnInit {
-  todosOsFilmes: any
+  todosOsFilmes: any;
 
   ngOnInit(): void {
     this._buscarTodosOsFilmes();

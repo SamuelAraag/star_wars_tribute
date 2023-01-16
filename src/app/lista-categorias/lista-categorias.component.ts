@@ -55,7 +55,9 @@ export class ListaCategoriasComponent {
     this.listaDosFilmes = results;
   }
 
-  _formatarTextoComPrimeiraLetraMaiuscula(palavras: string[]): string[] {
-    return palavras.map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  _formatarTextoComPrimeiraLetraMaiuscula(texto: string[]): string[] {
+    return texto.map(
+      (palavra) => palavra.charAt(0).toUpperCase() + palavra.slice(1)
+    );
   }
 }

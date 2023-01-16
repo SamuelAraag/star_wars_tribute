@@ -30,9 +30,11 @@ export class DetalhesFilmeComponent implements OnInit {
       .pipe(filter((event: any) => event instanceof NavigationEnd))
       .subscribe((x) => (this.urlAtual = x.url));
   }
+
   ngOnInit() {
     this._obterFilme();
   }
+
   async _obterFilme() {
     let idDoFilme = this.urlAtual?.split("/")[2];
     const response = await fetch(url + idDoFilme)

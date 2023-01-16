@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 const urlPersonagens = "https://swapi.py4e.com/api/people";
 const API_KEY = "ed3f37d04d7312de08330c744fadfc0b";
 const FLICKR_API_URL = "https://api.flickr.com/services/rest/";
+
 const SEGREDO = "c553ba6c7c33b302";
 
 @Component({
@@ -15,7 +16,7 @@ export class ListaPessoasComponent implements OnInit {
 
   ngOnInit(): void {
     this._buscarTodosOsPersonagens();
-    this.searchImagesByName("R2-D2");
+    this.searchImagesByName("DarthVader");
   }
 
   async _buscarTodosOsPersonagens() {
@@ -38,7 +39,6 @@ export class ListaPessoasComponent implements OnInit {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        // process the data here
         this.showImage(data.photos.photo[0]);
         console.log(data);
       })
