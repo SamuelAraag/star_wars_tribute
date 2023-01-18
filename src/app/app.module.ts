@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 import { ListaFilmesComponent } from "./lista-filmes/lista-filmes.component";
 import { DetalhesFilmeComponent } from "./detalhes-filme/detalhes-filme.component";
 import { CategoriasComponent } from "./categorias/categorias.component";
-import { CardCategoriasComponent } from "./categorias/card-categorias/card-categorias.component";
 import { ListaCategoriasComponent } from "./lista-categorias/lista-categorias.component";
 import { ListaPersonagensComponent } from "./lista-personagens/lista-personagens.component";
 
@@ -16,7 +15,6 @@ import { ListaPersonagensComponent } from "./lista-personagens/lista-personagens
     ListaFilmesComponent,
     DetalhesFilmeComponent,
     CategoriasComponent,
-    CardCategoriasComponent,
     ListaCategoriasComponent,
     ListaPersonagensComponent,
   ],

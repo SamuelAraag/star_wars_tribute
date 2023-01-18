@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.scss']
+  selector: "app-categorias",
+  templateUrl: "./categorias.component.html",
+  styleUrls: ["./categorias.component.scss"],
 })
 export class CategoriasComponent {
+  @Input()
+  categorias: String[] = [];
 
+  @Input()
+  imagensCategorias: {} = {};
 }
-  //films
+//films
 // :
 // "https://swapi.py4e.com/api/films/"
 // people

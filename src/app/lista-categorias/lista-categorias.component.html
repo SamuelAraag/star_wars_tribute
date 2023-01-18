@@ -9,8 +9,8 @@
             <div class="row gx-3">
                 <a [routerLink]="categoria.toLowerCase()" class="itens col-md-12 col-lg-4 mb-lg-0"
                     *ngFor="let categoria of categorias; index as i">
-                    <app-card-categorias [categorias]="categoria"
-                        [imagensCategorias]="imagensCategorias[i]"></app-card-categorias>
+                    <app-categorias [categorias]="categoria"
+                        [imagensCategorias]="imagensCategorias[i]"></app-categorias>
                 </a>
             </div>
         </div>

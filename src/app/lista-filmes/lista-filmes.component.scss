@@ -1,6 +1,7 @@
-.lista-dos-filmes{
+.lista-dos-filmes {
     min-height: 1500px;
 }
+
 .card {
     transition: 0.2s all;
     transform: scale(1);
@@ -36,4 +37,18 @@
 
 img {
     width: 100%;
+}
+
+.cards-filmes {
+    white-space: nowrap;
+}
+
+.itens {
+    padding-right: 35px;
+}
+
+.carregar-mais {
+    width: 40px;
+    height: 43px;
+    background-color: yellow;
 }
