@@ -8,10 +8,10 @@ const SEGREDO = "c553ba6c7c33b302";
 
 @Component({
   selector: "app-lista-pessoas",
-  templateUrl: "./lista-pessoas.component.html",
-  styleUrls: ["./lista-pessoas.component.scss"],
+  templateUrl: "./lista-personagens.component.html",
+  styleUrls: ["./lista-personagens.component.scss"],
 })
-export class ListaPessoasComponent implements OnInit {
+export class ListaPersonagensComponent implements OnInit {
   personagens: any;
 
   ngOnInit(): void {
