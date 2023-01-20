@@ -52,3 +52,22 @@ img {
     height: 43px;
     background-color: yellow;
 }
+
+.bloco-filmes {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: yellow;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+    border-radius: 5px;
+}
