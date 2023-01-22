@@ -5,10 +5,23 @@
     </div>
 
 
-    <div class="botao-carregar-mais text-end container">
-        <button type="button" class="btn btn-light">Carregar mais</button>
+
+
+    <div id="carousel-filmes" class="owl-carousel">
+        <div class="itens" *ngFor="let filme of todosOsFilmes; index as i">
+            <a routerLink="{{i + 1}}" class="card">
+                <div class="gradiente-amarelo">
+                    <img src="../../assets/imagens/films/poster/{{i}}.jpg"
+                        class="card-img-top rounded imagem-card-filmes" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{filme.title}}</h5>
+                </div>
+            </a>
+        </div>
     </div>
-    <div class="cards-filmes container">
+
+    <!-- <div class="cards-filmes container">
         <div class="py-4">
             <div class="d-flex gx-5 gy-5">
                 <div class="itens col-md-12 col-lg-3 mb-lg-0" *ngFor="let filme of todosOsFilmes; index as i">
@@ -24,5 +37,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
