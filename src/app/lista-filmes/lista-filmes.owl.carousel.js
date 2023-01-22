@@ -6,8 +6,6 @@ export function InicializarOwlCarousel() {
       loop: true,
       margin: 40,
       nav: true,
-      center: true,
-      padding: 0,
       navText: ['Anterior', 'Próximo']
     });
 

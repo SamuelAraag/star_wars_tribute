@@ -5,10 +5,26 @@
     </div>
 
 
+    <div id="carousel-filmes" class="owl-carousel owl-theme">
+        <div class=" itens" *ngFor="let filme of todosOsFilmes; index as i">
+            <div class="card item">
+                <a routerLink="{{i + 1}}" class="">
+                    <div class="">
+                        <img src="../../assets/imagens/films/poster/{{i}}.jpg"
+                            class="card-img-top rounded imagem-card-filmes" alt="...">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{filme.title}}</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
 
-    <div id="carousel-filmes" class="owl-carousel">
-        <div class="itens" *ngFor="let filme of todosOsFilmes; index as i">
+
+    <!-- <div id="carousel-filmes" class="owl-carousel owl-theme">
+        <div class="item" *ngFor="let filme of todosOsFilmes; index as i">
             <a routerLink="{{i + 1}}" class="card">
                 <div class="gradiente-amarelo">
                     <img src="../../assets/imagens/films/poster/{{i}}.jpg"
@@ -19,7 +35,7 @@
                 </div>
             </a>
         </div>
-    </div>
+    </div> -->
 
     <!-- <div class="cards-filmes container">
         <div class="py-4">
