@@ -13,7 +13,6 @@ export class ListaFilmesComponent implements OnInit {
 
   ngOnInit(): void {
     this._buscarTodosOsFilmes();
-    InicializarOwlCarousel();
   }
 
   async _buscarTodosOsFilmes() {
@@ -22,5 +21,6 @@ export class ListaFilmesComponent implements OnInit {
     const results = data.results;
     console.log(results);
     this.todosOsFilmes = results;
+    InicializarOwlCarousel();
   }
 }
