@@ -4,12 +4,12 @@
 
 .card {
     transition: 0.2s all;
-    transform: scale(1);
+    transform: scale(0.9);
 }
 
 .card:hover {
     transition: 0.2s all;
-    transform: scale(1.1)
+    transform: scale(1)
 }
 
 .card-body {
@@ -31,7 +31,7 @@
 }
 
 .imagem-card-filmes {
-    height: 443px;
+    height: 786px;
     object-fit: cover;
 }
 
@@ -46,4 +46,8 @@ img {
 .itens {
     padding-right: 35px;
     // width: 100px;
+}
+
+.owl-carouse {
+    height: 700px;
 }
