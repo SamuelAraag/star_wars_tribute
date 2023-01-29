@@ -3,7 +3,7 @@ export function InicializarOwlCarousel() {
     const carouselFilmes = $("#carousel-filmes");
 
     carouselFilmes.owlCarousel({
-      loop: true,
+      // loop: true,
       margin: 40,
       nav: true,
       navText: ['Anterior', 'Próximo']
