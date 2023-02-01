@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { CarregamentoComponent } from "./components/carregamento/carregamento.component";
 import { DetalhesFilmeComponent } from "./detalhes-filme/detalhes-filme.component";
 import { ListaCategoriasComponent } from "./lista-categorias/lista-categorias.component";
 import { ListaFilmesComponent } from "./lista-filmes/lista-filmes.component";
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: "films", component: ListaFilmesComponent },
   { path: "films/:id", component: DetalhesFilmeComponent },
   { path: "people", component: ListaPersonagensComponent },
+  { path: "carregamento", component: CarregamentoComponent },
 ];
 
 @NgModule({

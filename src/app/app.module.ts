@@ -8,6 +8,7 @@ import { DetalhesFilmeComponent } from "./detalhes-filme/detalhes-filme.componen
 import { CategoriasComponent } from "./categorias/categorias.component";
 import { ListaCategoriasComponent } from "./lista-categorias/lista-categorias.component";
 import { ListaPersonagensComponent } from "./lista-personagens/lista-personagens.component";
+import { CarregamentoComponent } from './components/carregamento/carregamento.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ListaPersonagensComponent } from "./lista-personagens/lista-personagens
     CategoriasComponent,
     ListaCategoriasComponent,
     ListaPersonagensComponent,
+    CarregamentoComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
