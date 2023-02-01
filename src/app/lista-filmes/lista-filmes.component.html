@@ -4,6 +4,7 @@
         <i class="bi bi-apple"></i>
     </div>
 
+    <app-carregamento *ngIf="carregando"></app-carregamento>
 
     <div id="carousel-filmes" class="owl-carousel owl-theme">
         <div class=" itens" *ngFor="let filme of todosOsFilmes; index as i">
@@ -20,6 +21,7 @@
             </div>
         </div>
     </div>
+
 
 
 

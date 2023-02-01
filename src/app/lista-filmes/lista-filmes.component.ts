@@ -10,6 +10,7 @@ const urlFilmes = "https://swapi.py4e.com/api/films";
 })
 export class ListaFilmesComponent implements OnInit {
   todosOsFilmes: any;
+  carregando = true;
 
   ngOnInit(): void {
     this._buscarTodosOsFilmes();
@@ -22,5 +23,6 @@ export class ListaFilmesComponent implements OnInit {
     console.log(results);
     this.todosOsFilmes = results;
     InicializarOwlCarousel();
+    this.carregando = false
   }
 }
