@@ -6,20 +6,23 @@
 
     <app-carregamento *ngIf="carregando"></app-carregamento>
 
-    <div id="carousel-filmes" class="owl-carousel owl-theme">
-        <div class=" itens" *ngFor="let filme of todosOsFilmes; index as i">
-            <div class="card item">
-                <a routerLink="{{i + 1}}" class="">
-                    <div class="">
-                        <img src="../../assets/imagens/films/poster/{{i}}.jpg"
-                            class="card-img-top rounded imagem-card-filmes" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{filme.title}}</h5>
-                    </div>
-                </a>
+    <div class="box-filmes">
+        <div id="carousel-filmes" class="owl-carousel owl-theme">
+            <div class=" itens" *ngFor="let filme of todosOsFilmes; index as i">
+                <div class="card item">
+                    <a routerLink="{{i + 1}}" class="">
+                        <div class="">
+                            <img src="../../assets/imagens/films/poster/{{i}}.jpg"
+                                class="card-img-top rounded imagem-card-filmes" alt="...">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{filme.title}}</h5>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
+
     </div>
 
 
