@@ -13,6 +13,7 @@ const SEGREDO = "c553ba6c7c33b302";
 })
 export class ListaPersonagensComponent implements OnInit {
   personagens: any;
+  carregando = true;
 
   ngOnInit(): void {
     this._buscarTodosOsPersonagens();
@@ -25,6 +26,7 @@ export class ListaPersonagensComponent implements OnInit {
     const results = data.results;
     console.log(results);
     this.personagens = results;
+    this.carregando = false;
   }
 
   searchImagesByName(nomePesquisa: string) {

@@ -1,7 +1,3 @@
-// .lista-dos-filmes {
-//     min-height: 1000px;
-// }
-
 .card {
     transition: 0.2s all;
     transform: scale(1);
@@ -70,4 +66,54 @@ img {
 ::-webkit-scrollbar-track {
     background: white;
     border-radius: 5px;
+
+.card {
+    transition: 0.2s all;
+    transform: scale(0.9);
+}
+
+.card:hover {
+    transition: 0.2s all;
+    transform: scale(1)
+}
+
+.card-body {
+    background-color: black;
+    color: yellow;
+    border-radius: 10px;
+    height: 85px;
+}
+
+.card {
+    
+    border: solid 4px yellow;
+    background-color: black;
+    // width: 218px;
+    // height: 394px;
+}
+
+.lista-dos-filmes {
+    color: white;
+}
+
+.imagem-card-filmes {
+    height: 786px;
+    object-fit: cover;
+}
+
+img {
+    width: 100%;
+}
+
+.cards-filmes {
+    white-space: nowrap;
+}
+
+.itens {
+    padding-right: 35px;
+    // width: 100px;
+}
+
+.owl-carouse {
+    height: 700px;
 }
