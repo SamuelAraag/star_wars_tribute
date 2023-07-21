@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/tema-principal.scss"
+              "src/tema-principal.scss",
+              "src/assets/owlCarousel/dist/assets/owl.carousel.css"
             ],
             "scripts": []
           },

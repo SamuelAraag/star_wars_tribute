@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { InicializarOwlCarousel } from "./lista-filmes.owl.carousel";
 
 const urlFilmes = "https://swapi.py4e.com/api/films";
 
@@ -12,6 +13,7 @@ export class ListaFilmesComponent implements OnInit {
 
   ngOnInit(): void {
     this._buscarTodosOsFilmes();
+    InicializarOwlCarousel();
   }
 
   async _buscarTodosOsFilmes() {

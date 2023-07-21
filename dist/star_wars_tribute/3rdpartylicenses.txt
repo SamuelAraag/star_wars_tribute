@@ -10,6 +10,9 @@ MIT
 @angular/router
 MIT
 
+owl.carousel
+SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+
 rxjs
 Apache-2.0
                                Apache License
