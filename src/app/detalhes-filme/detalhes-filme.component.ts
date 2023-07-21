@@ -41,8 +41,6 @@ export class DetalhesFilmeComponent implements OnInit {
       .then((res) => res.json())
       .then((data) => data);
     this.filme = response;
-    console.log(this.filme);
-    debugger;
     this._atribuirImagemParaFilmeSelecionado(idDoFilme);
   }
 
