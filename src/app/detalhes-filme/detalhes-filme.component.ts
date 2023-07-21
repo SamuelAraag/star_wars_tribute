@@ -11,7 +11,6 @@ const url = "https://swapi.py4e.com/api/films/";
 })
 export class DetalhesFilmeComponent implements OnInit {
   urlAtual?: string;
-  carregando = true;
 
   urlImagemFilme = {
     1: "../assets/imagens/films/wallpaper/0.jpg",
@@ -42,11 +41,7 @@ export class DetalhesFilmeComponent implements OnInit {
       .then((res) => res.json())
       .then((data) => data);
     this.filme = response;
-    console.log(this.filme);
-    debugger;
     this._atribuirImagemParaFilmeSelecionado(idDoFilme);
-    this.carregando = false;
-
   }
 
   _atribuirImagemParaFilmeSelecionado(id: any) {
