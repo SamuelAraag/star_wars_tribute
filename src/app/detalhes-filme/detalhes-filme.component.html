@@ -1,13 +1,15 @@
 <div class="titulo-principal container">
-    <h3 class="text-white">Detalhes do filme</h3>
-    <app-carregamento *ngIf="carregando"></app-carregamento>
-    <div class="card mb-3">
-        <img src="{{imagemFilme}}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{filme.title}}</h5>
-            <p class="card-text">{{filme.opening_crawl}}</p>
-            <p class="m-0">Lancado em: </p>
-            <p class="card-text"><small class="">{{filme.release_date}}</small></p>
-        </div>
+  <h3 class="text-white">Detalhes do filme</h3>
+  <!-- <app-carregamento *ngIf="carregando"></app-carregamento> -->
+  <div class="card mb-3">
+    <img src="{{ imagemFilme }}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ filme.title }}</h5>
+      <p class="card-text">{{ filme.opening_crawl }}</p>
+      <p class="m-0">Lancado em:</p>
+      <p class="card-text">
+        <small class="">{{ filme.release_date }}</small>
+      </p>
     </div>
+  </div>
 </div>
