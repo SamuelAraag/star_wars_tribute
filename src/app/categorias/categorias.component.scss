@@ -11,10 +11,11 @@
 .card-body {
     background-color: black;
     color: yellow;
-    border-radius: 10px;
+    border-radius: 12px;
 }
 
 .card {
+    border-radius: 15px;
     border: solid 3px yellow;
     background-color: black;
 }
@@ -23,4 +24,8 @@
     height: 200px;
     width: 100%;
     object-fit: cover;
+}
+
+img{
+    border-radius: 12px 12px 0px 0px
 }
