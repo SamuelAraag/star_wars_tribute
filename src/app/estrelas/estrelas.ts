@@ -38,6 +38,7 @@ export class Estrelas {
   private velocidade = CALMA;
   private alvo = CALMA;
   private parado = false;
+  private espera?: ReturnType<typeof setTimeout>;
 
   constructor() {
     const destroy = inject(DestroyRef);
@@ -52,21 +53,31 @@ export class Estrelas {
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
       const movimento = matchMedia('(prefers-reduced-motion: reduce)');
-      this.parado = movimento.matches;
+      let quadro = 0;
+      const animar = () => {
+        this.desenhar(ctx, canvas);
+        quadro = this.parado ? 0 : requestAnimationFrame(animar);
+      };
       const ajustar = () => {
         canvas.width = innerWidth * devicePixelRatio;
         canvas.height = innerHeight * devicePixelRatio;
+        if (this.parado) this.desenhar(ctx, canvas);
       };
+      const mudarMovimento = () => {
+        this.parado = movimento.matches;
+        cancelAnimationFrame(quadro);
+        animar();
+      };
+      this.parado = movimento.matches;
       ajustar();
+      animar();
       addEventListener('resize', ajustar);
-      const animar = () => {
-        this.desenhar(ctx, canvas);
-        quadro = requestAnimationFrame(animar);
-      };
-      let quadro = requestAnimationFrame(animar);
+      movimento.addEventListener('change', mudarMovimento);
       destroy.onDestroy(() => {
         cancelAnimationFrame(quadro);
+        clearTimeout(this.espera);
         removeEventListener('resize', ajustar);
+        movimento.removeEventListener('change', mudarMovimento);
       });
     });
   }
@@ -74,7 +85,8 @@ export class Estrelas {
   private saltar(): void {
     if (this.parado) return;
     this.alvo = SALTO;
-    setTimeout(() => (this.alvo = CALMA), 520);
+    clearTimeout(this.espera);
+    this.espera = setTimeout(() => (this.alvo = CALMA), 520);
   }
 
   private desenhar(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {

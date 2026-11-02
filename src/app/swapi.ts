@@ -1,4 +1,4 @@
-import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
+import { HttpInterceptorFn, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { of, tap } from 'rxjs';
 
@@ -17,6 +17,7 @@ export interface Categoria {
   nome: string;
   singular: string;
   masculino: boolean;
+  ultimo: number;
   resumo: (item: Item) => string;
   ficha: [string, string][];
 }
@@ -53,6 +54,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Filmes',
     singular: 'filme',
     masculino: true,
+    ultimo: 7,
     resumo: (i) => `Episódio ${i['episode_id']} · ${String(i['release_date']).slice(0, 4)}`,
     ficha: [
       ['director', 'Direção'],
@@ -65,6 +67,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Personagens',
     singular: 'personagem',
     masculino: true,
+    ultimo: 88,
     resumo: (i) => `Nascimento ${texto(i, 'birth_year')} · ${texto(i, 'gender')}`,
     ficha: [
       ['birth_year', 'Nascimento'],
@@ -80,6 +83,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Planetas',
     singular: 'planeta',
     masculino: true,
+    ultimo: 61,
     resumo: (i) => `Clima ${texto(i, 'climate')} · População ${texto(i, 'population')}`,
     ficha: [
       ['climate', 'Clima'],
@@ -95,6 +99,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Espécies',
     singular: 'espécie',
     masculino: false,
+    ultimo: 37,
     resumo: (i) => `${texto(i, 'classification')} · ${texto(i, 'language')}`,
     ficha: [
       ['classification', 'Classificação'],
@@ -109,6 +114,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Veículos',
     singular: 'veículo',
     masculino: true,
+    ultimo: 76,
     resumo: (i) => `${i['model']} · ${texto(i, 'vehicle_class')}`,
     ficha: [
       ['model', 'Modelo'],
@@ -124,6 +130,7 @@ export const CATEGORIAS: Categoria[] = [
     nome: 'Naves',
     singular: 'nave',
     masculino: false,
+    ultimo: 77,
     resumo: (i) => `${i['model']} · ${texto(i, 'starship_class')}`,
     ficha: [
       ['model', 'Modelo'],
@@ -171,6 +178,25 @@ export function poster(id: string | number): string {
 }
 
 const respostas = new Map<string, HttpResponse<unknown>>();
+const paginas = new Map<string, number>();
+
+export function paginaDoItem(url: string): number {
+  return paginas.get(url) ?? Math.max(1, Math.ceil(Number(idDe(url)) / POR_PAGINA));
+}
+
+function guardarItens(req: HttpRequest<unknown>, resposta: HttpResponse<unknown>): void {
+  const corpo = resposta.body as Partial<Pagina> | null;
+  if (!Array.isArray(corpo?.results)) return;
+  const pagina = Number(
+    req.params.get('page') ?? new URL(req.urlWithParams).searchParams.get('page') ?? 1,
+  );
+  for (const item of corpo.results) {
+    paginas.set(item.url, pagina);
+    if (!respostas.has(item.url)) {
+      respostas.set(item.url, new HttpResponse({ body: item, status: 200, url: item.url }));
+    }
+  }
+}
 
 export const cacheSwapi: HttpInterceptorFn = (req, next) => {
   if (req.method !== 'GET' || !req.url.startsWith(API)) return next(req);
@@ -178,23 +204,12 @@ export const cacheSwapi: HttpInterceptorFn = (req, next) => {
   if (guardada) return of(guardada.clone());
   return next(req).pipe(
     tap((evento) => {
-      if (evento instanceof HttpResponse && evento.ok) respostas.set(req.urlWithParams, evento);
+      if (!(evento instanceof HttpResponse) || !evento.ok) return;
+      respostas.set(req.urlWithParams, evento);
+      guardarItens(req, evento);
     }),
   );
 };
-
-@Injectable({ providedIn: 'root' })
-export class OrigemLista {
-  private readonly paginas = signal<Record<string, number>>({});
-
-  pagina(chave: string): number {
-    return this.paginas()[chave] ?? 1;
-  }
-
-  guardar(chave: string, pagina: number): void {
-    this.paginas.update((atual) => ({ ...atual, [chave]: pagina }));
-  }
-}
 
 @Injectable({ providedIn: 'root' })
 export class Hiperespaco {

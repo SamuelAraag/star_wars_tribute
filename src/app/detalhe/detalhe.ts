@@ -1,4 +1,4 @@
-import { HttpErrorResponse, httpResource } from '@angular/common/http';
+import { httpResource } from '@angular/common/http';
 import { Component, computed, effect, inject, input, numberAttribute } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
@@ -8,7 +8,7 @@ import {
   Item,
   LIGACOES,
   nomeDe,
-  OrigemLista,
+  paginaDoItem,
   poster,
   traduzir,
 } from '../swapi';
@@ -23,7 +23,6 @@ export class Detalhe {
   readonly categoria = input.required<string>();
   readonly id = input.required({ transform: (v: unknown) => numberAttribute(v, 0) });
 
-  private readonly origem = inject(OrigemLista);
   private readonly titulo = inject(Title);
 
   protected readonly config = computed(() => buscarCategoria(this.categoria()));
@@ -34,16 +33,17 @@ export class Detalhe {
   );
 
   protected readonly naoExiste = computed(
-    () =>
-      !this.config() ||
-      this.id() < 1 ||
-      (this.item.error() as HttpErrorResponse | undefined)?.status === 404,
+    () => !this.config() || this.id() < 1 || this.item.statusCode() === 404,
   );
 
   protected readonly paginaOrigem = computed(() => {
-    const pagina = this.origem.pagina(this.categoria());
+    const config = this.config();
+    if (!config || this.id() < 1) return null;
+    const pagina = paginaDoItem(`${API}${config.chave}/${this.id()}/`);
     return pagina > 1 ? pagina : null;
   });
+
+  protected readonly temProximo = computed(() => this.id() < (this.config()?.ultimo ?? 0));
 
   protected readonly todos = computed(() => {
     const config = this.config();
@@ -54,12 +54,10 @@ export class Detalhe {
   protected readonly ligacoes = computed(() => {
     if (!this.item.hasValue()) return [];
     const item = this.item.value();
-    return LIGACOES.filter(([campo]) => campo !== this.categoria())
-      .map(([campo, rotulo]) => ({
-        rotulo,
-        urls: [item[campo]].flat().filter(Boolean) as string[],
-      }))
-      .filter((grupo) => grupo.urls.length);
+    return LIGACOES.map(([campo, rotulo]) => ({
+      rotulo,
+      urls: [item[campo]].flat().filter(Boolean) as string[],
+    })).filter((grupo) => grupo.urls.length);
   });
 
   protected readonly crawl = computed(() =>

@@ -1,5 +1,5 @@
-import { HttpErrorResponse, httpResource } from '@angular/common/http';
-import { Component, computed, effect, inject, input, numberAttribute } from '@angular/core';
+import { httpResource } from '@angular/common/http';
+import { Component, computed, effect, inject, input } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 import {
@@ -8,11 +8,15 @@ import {
   idDe,
   Item,
   nomeDe,
-  OrigemLista,
   Pagina,
   POR_PAGINA,
   poster,
 } from '../swapi';
+
+function paginaValida(valor: unknown): number {
+  const numero = Number(valor ?? 1);
+  return Number.isInteger(numero) && numero > 0 ? numero : 1;
+}
 
 @Component({
   selector: 'app-lista',
@@ -21,9 +25,8 @@ import {
 })
 export class Lista {
   readonly categoria = input.required<string>();
-  readonly pagina = input(1, { transform: (v: unknown) => Math.max(1, numberAttribute(v, 1)) });
+  readonly pagina = input(1, { transform: paginaValida });
 
-  private readonly origem = inject(OrigemLista);
   private readonly titulo = inject(Title);
 
   protected readonly config = computed(() => buscarCategoria(this.categoria()));
@@ -36,9 +39,7 @@ export class Lista {
     this.config() ? `${API}${this.categoria()}/?page=${this.pagina()}` : undefined,
   );
 
-  protected readonly naoExiste = computed(
-    () => (this.dados.error() as HttpErrorResponse | undefined)?.status === 404,
-  );
+  protected readonly naoExiste = computed(() => this.dados.statusCode() === 404);
 
   protected readonly total = computed(() => {
     const dados = this.dados.hasValue() ? this.dados.value() : undefined;
@@ -53,7 +54,6 @@ export class Lista {
     effect(() => {
       const config = this.config();
       this.titulo.setTitle(config ? `${config.nome} · Star Wars Tributo` : 'Star Wars Tributo');
-      if (config) this.origem.guardar(config.chave, this.pagina());
     });
   }
 

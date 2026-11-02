@@ -24,7 +24,16 @@
 @if (naoExiste()) {
   <div class="aviso">
     <h2>Não encontrado</h2>
-    <p>A SWAPI pula alguns números. Use os botões abaixo para seguir.</p>
+    <p>Esse número não existe na SWAPI.</p>
+  </div>
+} @else if (item.isLoading()) {
+  <div aria-busy="true" aria-label="Carregando">
+    <div class="esqueleto esqueleto--titulo"></div>
+    <div class="ficha">
+      @for (_ of [1, 2, 3, 4]; track $index) {
+        <div class="esqueleto"></div>
+      }
+    </div>
   </div>
 } @else if (item.error()) {
   <div class="aviso aviso--erro" role="alert">
@@ -69,15 +78,6 @@
       </div>
     </div>
   </div>
-} @else {
-  <div aria-busy="true" aria-label="Carregando">
-    <div class="esqueleto esqueleto--titulo"></div>
-    <div class="ficha">
-      @for (_ of [1, 2, 3, 4]; track $index) {
-        <div class="esqueleto"></div>
-      }
-    </div>
-  </div>
 }
 
 @if (c) {
@@ -90,6 +90,10 @@
     <a class="botao" [routerLink]="['/', c.chave]" [queryParams]="{ pagina: paginaOrigem() }">{{
       todos()
     }}</a>
-    <a class="botao" rel="next" [routerLink]="['/', c.chave, id() + 1]">Próximo →</a>
+    @if (temProximo()) {
+      <a class="botao" rel="next" [routerLink]="['/', c.chave, id() + 1]">Próximo →</a>
+    } @else {
+      <span class="botao" aria-disabled="true">Próximo →</span>
+    }
   </nav>
 }
