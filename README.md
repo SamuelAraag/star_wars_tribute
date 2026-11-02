@@ -2,6 +2,10 @@
 
 Filmes, personagens, planetas, espécies, veículos e naves de Star Wars, com dados da [SWAPI](https://swapi.py4e.com/).
 
+No ar em https://samuelaraag.github.io/star_wars_tribute/
+
+[![Página inicial do Star Wars Tributo](docs/print.png)](https://samuelaraag.github.io/star_wars_tribute/)
+
 - Listagem por categoria com paginação na URL (`/people?pagina=2`)
 - Detalhe com links para os itens ligados, anterior e próximo, e volta para a página de origem
 - Transição de hiperespaço entre as telas (View Transitions), desligada para quem prefere menos movimento
