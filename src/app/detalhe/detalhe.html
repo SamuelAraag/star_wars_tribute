@@ -1,0 +1,99 @@
+@let c = config();
+<nav aria-label="Você está em">
+  <ol class="migalhas">
+    <li><a routerLink="/">Início</a></li>
+    @if (c) {
+      <li>
+        <a [routerLink]="['/', c.chave]" [queryParams]="{ pagina: paginaOrigem() }">{{ c.nome }}</a>
+      </li>
+    }
+    <li>
+      <span aria-current="page">
+        @if (item.hasValue()) {
+          {{ nomeDe(item.value()) }}
+        } @else if (naoExiste()) {
+          Não encontrado
+        } @else {
+          Carregando
+        }
+      </span>
+    </li>
+  </ol>
+</nav>
+
+@if (naoExiste()) {
+  <div class="aviso">
+    <h2>Não encontrado</h2>
+    <p>Esse número não existe na SWAPI.</p>
+  </div>
+} @else if (item.isLoading()) {
+  <div aria-busy="true" aria-label="Carregando">
+    <div class="esqueleto esqueleto--titulo"></div>
+    <div class="ficha">
+      @for (_ of [1, 2, 3, 4]; track $index) {
+        <div class="esqueleto"></div>
+      }
+    </div>
+  </div>
+} @else if (item.error()) {
+  <div class="aviso aviso--erro" role="alert">
+    <h2>Não deu para carregar</h2>
+    <p>A SWAPI não respondeu. Confira a conexão e tente de novo.</p>
+    <button type="button" class="botao" (click)="item.reload()">Tentar de novo</button>
+  </div>
+} @else if (item.hasValue() && c) {
+  @let dados = item.value();
+  <div class="entrada">
+    <h1 class="titulo">{{ nomeDe(dados) }}</h1>
+    <div class="detalhe" [class.detalhe--com-imagem]="ehFilme()">
+      @if (ehFilme()) {
+        <div class="detalhe__imagem">
+          <img [src]="poster(id())" [alt]="'Pôster de ' + nomeDe(dados)" width="300" height="450" />
+        </div>
+      }
+      <div>
+        <dl class="ficha">
+          @for (campo of c.ficha; track campo[0]) {
+            <div>
+              <dt>{{ campo[1] }}</dt>
+              <dd>{{ traduzir(dados[campo[0]]) }}</dd>
+            </div>
+          }
+        </dl>
+        @if (crawl()) {
+          <p class="crawl">{{ crawl() }}</p>
+        }
+        <div class="ligados">
+          @for (grupo of ligacoes(); track grupo.rotulo) {
+            <section>
+              <h2>{{ grupo.rotulo }}</h2>
+              <ul class="chips">
+                @for (url of grupo.urls; track url) {
+                  <li><app-ligado [url]="url" /></li>
+                }
+              </ul>
+            </section>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (c) {
+  <nav class="navega-itens" [attr.aria-label]="'Outros ' + c.nome.toLowerCase()">
+    @if (id() > 1) {
+      <a class="botao" rel="prev" [routerLink]="['/', c.chave, id() - 1]">← Anterior</a>
+    } @else {
+      <span class="botao" aria-disabled="true">← Anterior</span>
+    }
+    <a class="botao" [routerLink]="['/', c.chave]" [queryParams]="{ pagina: paginaOrigem() }">{{
+      todos()
+    }}</a>
+    @if (temProximo()) {
+      <a class="botao" rel="next" [routerLink]="['/', c.chave, id() + 1]">Próximo →</a>
+    } @else {
+      <span class="botao" aria-disabled="true">Próximo →</span>
+    }
+  </nav>
+}

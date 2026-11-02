@@ -1,0 +1,101 @@
+@let c = config();
+@if (!c) {
+  <div class="aviso">
+    <h2>Página não encontrada</h2>
+    <p>Esse endereço não existe nesta galáxia.</p>
+    <a class="botao" routerLink="/">Ir para o início</a>
+  </div>
+} @else {
+  <nav aria-label="Você está em">
+    <ol class="migalhas">
+      <li><a routerLink="/">Início</a></li>
+      <li>
+        <span aria-current="page">{{ c.nome }}</span>
+      </li>
+    </ol>
+  </nav>
+  <h1 class="titulo">{{ c.nome }}</h1>
+
+  @if (dados.isLoading()) {
+    <ul class="grade" [class.grade--filmes]="ehFilme()" aria-busy="true" aria-label="Carregando">
+      @for (_ of esqueletos(); track $index) {
+        <li><div class="esqueleto" [class.esqueleto--poster]="ehFilme()"></div></li>
+      }
+    </ul>
+  } @else if (naoExiste()) {
+    <div class="aviso">
+      <h2>Nada por aqui</h2>
+      <p>Essa página não existe.</p>
+      <a class="botao" [routerLink]="['/', c.chave]">Voltar para a primeira página</a>
+    </div>
+  } @else if (dados.error()) {
+    <div class="aviso aviso--erro" role="alert">
+      <h2>Não deu para carregar</h2>
+      <p>A SWAPI não respondeu. Confira a conexão e tente de novo.</p>
+      <button type="button" class="botao" (click)="dados.reload()">Tentar de novo</button>
+    </div>
+  } @else if (dados.hasValue()) {
+    @let itens = dados.value().results;
+    @if (!itens.length) {
+      <div class="aviso">
+        <h2>Nada por aqui</h2>
+        <p>Essa página está vazia.</p>
+      </div>
+    } @else {
+      <ul class="grade entrada" [class.grade--filmes]="ehFilme()">
+        @for (item of itens; track item.url; let i = $index) {
+          <li [style.--i]="i">
+            <a class="card" [routerLink]="['/', c.chave, idDe(item.url)]">
+              @if (ehFilme()) {
+                <div class="card__midia card__midia--poster">
+                  <img
+                    [src]="poster(idDe(item.url))"
+                    alt=""
+                    width="200"
+                    height="300"
+                    loading="lazy"
+                  />
+                </div>
+              }
+              <div class="card__corpo">
+                <h2 class="card__nome">{{ nomeDe(item) }}</h2>
+                <p class="card__info">{{ resumo(item) }}</p>
+              </div>
+            </a>
+          </li>
+        }
+      </ul>
+      @if (total() > 1) {
+        <nav class="paginacao" aria-label="Paginação">
+          @if (pagina() > 1) {
+            <a
+              class="botao"
+              rel="prev"
+              [routerLink]="['/', c.chave]"
+              [queryParams]="{ pagina: pagina() > 2 ? pagina() - 1 : null }"
+            >
+              ← <span class="rotulo">Anterior</span>
+            </a>
+          } @else {
+            <span class="botao" aria-disabled="true">← <span class="rotulo">Anterior</span></span>
+          }
+          <span class="paginacao__estado" role="status"
+            >Página {{ pagina() }} de {{ total() }}</span
+          >
+          @if (pagina() < total()) {
+            <a
+              class="botao"
+              rel="next"
+              [routerLink]="['/', c.chave]"
+              [queryParams]="{ pagina: pagina() + 1 }"
+            >
+              <span class="rotulo">Próxima</span> →
+            </a>
+          } @else {
+            <span class="botao" aria-disabled="true"><span class="rotulo">Próxima</span> →</span>
+          }
+        </nav>
+      }
+    }
+  }
+}
