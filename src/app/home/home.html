@@ -1,0 +1,26 @@
+<div class="entrada">
+  <div class="home-intro">
+    <h1 class="titulo">star wars</h1>
+    <p>Filmes, personagens, planetas e naves da saga, com dados da SWAPI.</p>
+  </div>
+  <ul class="grade grade--categorias">
+    @for (c of categorias; track c.chave; let i = $index) {
+      <li [style.--i]="i">
+        <a class="card card--categoria" [routerLink]="['/', c.chave]">
+          <div class="card__midia">
+            <img
+              [src]="'assets/categorias/' + c.chave + '.jpg'"
+              alt=""
+              width="320"
+              height="180"
+              loading="lazy"
+            />
+          </div>
+          <div class="card__corpo">
+            <h2 class="card__nome">{{ c.nome }}</h2>
+          </div>
+        </a>
+      </li>
+    }
+  </ul>
+</div>
